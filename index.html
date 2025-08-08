@@ -5,73 +5,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UNO MÁS!</title>
-  <!-- Fallback font similar. Replace with Avallor by adding the font file in /fonts and updating @font-face -->
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root{
       --violeta:#b277ff;
       --amarillo:#fdf200;
-      --negro:#0d0d0d;
+      --negro:#0b0b0b;
+      --wa:#25D366;
+      --tt-cyan:#00f2ea;
+      --tt-pink:#ff0050;
     }
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      background: url('carta1.jpg') center/cover fixed no-repeat;
+      background: url('bg.jpg') center/cover fixed no-repeat;
       color:#fff;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-    /* overlay para mejorar contraste */
     body::before{
       content:"";
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,.65);
+      background:linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.72));
       z-index:-1;
     }
     header{
       display:flex;
+      flex-direction:column;
       align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:14px 16px;
-      background: radial-gradient(1200px 200px at 50% -50%, rgba(253,242,0,.25), transparent 60%);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      gap:10px;
+      padding:18px 16px 8px;
+      text-align:center;
     }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-    }
-    .brand img{width:58px;height:58px}
+    .brand img{width:88px;height:88px;border-radius:50%; box-shadow:0 0 18px rgba(253,242,0,.35), 0 0 26px rgba(178,119,255,.35);}
     .brand h1{
-      margin:0;
-      font-family: 'Bangers', cursive; /* reemplazar por 'Avallor' si se sube la tipografía */
+      margin:6px 0 0;
+      font-family:'Bangers', cursive;
       letter-spacing:1px;
-      font-size: clamp(28px, 4vw, 40px);
+      font-size: clamp(32px,6vw,56px);
       color:#fff;
-      text-shadow: 0 0 8px rgba(178,119,255,.6), 0 0 18px rgba(253,242,0,.35);
+      text-shadow: 0 0 10px rgba(178,119,255,.7), 0 0 22px rgba(253,242,0,.45);
     }
-    .actions{
-      display:flex; align-items:center; gap:10px;
+    .tagline{
+      margin:4px 0 10px;
+      font-size:16px;
+      color:#eaeaea;
     }
-    .actions a{
-      display:inline-flex; align-items:center; justify-content:center;
-      width:40px;height:40px;border-radius:10px;
-      background:#111; border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 2px 10px rgba(0,0,0,.35);
-      transition: transform .1s ease, box-shadow .2s ease, border-color .2s ease;
+    .social-dock{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin:8px 0 10px;
     }
-    .actions a:hover{ transform: translateY(-2px); border-color: rgba(253,242,0,.6); box-shadow:0 6px 16px rgba(253,242,0,.15); }
-    .actions img{ width:22px; height:22px; }
+    .btn-social{
+      width:64px;height:64px;border-radius:18px;
+      display:inline-flex;align-items:center;justify-content:center;
+      border:1px solid rgba(255,255,255,.12);
+      background:#101010;
+      position:relative;
+      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .btn-social img{ width:30px; height:30px; filter: invert(1) brightness(1.1); }
+    .btn-social:hover{ transform: translateY(-3px); }
+    .btn-wa{ box-shadow: 0 0 12px var(--wa), 0 0 24px rgba(37,211,102,.4); border-color: rgba(37,211,102,.55); }
+    .btn-ig{ 
+      background: radial-gradient(circle at 30% 30%, #ffdd55, #ff2e77 45%, #b700ff 75%);
+      box-shadow: 0 0 14px rgba(255,46,119,.55), 0 0 26px rgba(183,0,255,.45);
+      border:1px solid rgba(255,255,255,.15);
+    }
+    .btn-tt{ box-shadow: 0 0 10px var(--tt-cyan), 0 0 14px var(--tt-pink); border-color: rgba(255,255,255,.18); }
+    .btn-maps{ 
+      background: radial-gradient(circle at 30% 30%, var(--amarillo), #ffd84d 40%, #7a5cff 90%);
+      box-shadow: 0 0 12px rgba(253,242,0,.55), 0 0 26px rgba(122,92,255,.45);
+      border:1px solid rgba(255,255,255,.18);
+    }
+
     .hero{
       text-align:center;
-      padding: 18px 16px 8px;
+      padding: 6px 16px 12px;
     }
-    .hero p{
-      margin:6px 0 0;
-      color:#ddd;
-      font-size:14px;
+    .hero .cta{
+      margin:6px auto 0;
+      max-width:920px;
+      font-size:18px; font-weight:700;
+      color:#fff;
+      text-shadow: 0 0 10px rgba(253,242,0,.45);
     }
+
     .grid{
-      max-width:980px; margin:22px auto 60px; padding:0 14px;
+      max-width:980px; margin:14px auto 60px; padding:0 14px;
       display:grid; grid-template-columns:1fr; gap:16px;
     }
     @media(min-width:720px){ .grid{ grid-template-columns:1fr 1fr; gap:18px; } }
@@ -86,19 +111,10 @@
     }
     .card-img:hover{ transform: translateY(-4px); border-color: rgba(253,242,0,.6); box-shadow: 0 16px 36px rgba(178,119,255,.25); }
     .card-img img{ width:100%; display:block; }
-    .cta-wa{
-      position:absolute; right:12px; bottom:12px;
-      background:linear-gradient(135deg, var(--amarillo), #ffd84d);
-      color:#000; font-weight:700; text-decoration:none;
-      padding:10px 14px; border-radius:12px;
-      box-shadow: 0 6px 14px rgba(253,242,0,.35);
-      border: 1px solid rgba(0,0,0,.2);
-      font-size:14px;
-    }
+
     footer{
       padding: 26px 16px 38px;
-      text-align:center;
-      color:#ccc;
+      text-align:center;color:#ccc;
     }
     .legal{ font-size:12px; opacity:.75; margin-top:10px }
   </style>
@@ -109,32 +125,39 @@
       <img src="logo.png" alt="UNO MÁS logo">
       <h1>UNO MÁS!</h1>
     </div>
-    <div class="actions">
-      <a href="https://wa.me/5493885205146" aria-label="WhatsApp" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WA" /></a>
-      <a href="https://www.instagram.com/_uno_mas_jujuy?igsh=OGtucW9kcnlkZmdr" aria-label="Instagram" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="IG" /></a>
-      <a href="https://www.tiktok.com/@zalo.349?_t=ZM-8ycGgCxxWNR&_r=1" aria-label="TikTok" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TT" /></a>
-      <a href="https://maps.app.goo.gl/bKYQYgMxtcEPQzFZ8" aria-label="Ubicación" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlemaps.svg" alt="Maps" /></a>
-    </div>
-  </header>
 
-  <section class="hero">
-    <p>Hacé tu pedido por WhatsApp. Toque/tap en la carta 👇</p>
-  </section>
+    <div class="hero">
+      <div class="cta">Hacé tu pedido al toque👇</div>
+    </div>
+
+    <nav class="social-dock" aria-label="Redes y contacto">
+      <a class="btn-social btn-wa" href="https://wa.me/5493885205146" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">
+      </a>
+      <a class="btn-social btn-ig" href="https://www.instagram.com/_uno_mas_jujuy?igsh=OGtucW9kcnlkZmdr" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+      </a>
+      <a class="btn-social btn-tt" href="https://www.tiktok.com/@uno.mas.tragos?_t=ZM-8yiX7ZOlGP2&_r=1" target="_blank" rel="noopener" aria-label="TikTok">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok">
+      </a>
+      <a class="btn-social btn-maps" href="https://maps.app.goo.gl/bKYQYgMxtcEPQzFZ8" target="_blank" rel="noopener" aria-label="Ubicación">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlemaps.svg" alt="Ubicación">
+      </a>
+    </nav>
+  </header>
 
   <main class="grid">
     <a class="card-img" href="https://wa.me/5493885205146" target="_blank" rel="noopener">
       <img src="carta1.jpg" alt="Carta - De la casa">
-      <span class="cta-wa">Pedir por WhatsApp</span>
     </a>
     <a class="card-img" href="https://wa.me/5493885205146" target="_blank" rel="noopener">
       <img src="carta2.jpg" alt="Carta - Clásicos">
-      <span class="cta-wa">Pedir por WhatsApp</span>
     </a>
   </main>
 
   <footer>
     <div>© UNO MÁS! — Tragos a domicilio</div>
-    <div class="legal">IG: @_uno_mas_jujuy · TikTok: @zalo.349</div>
+    <div class="legal">IG: @_uno_mas_jujuy · TikTok: @uno.mas.tragos</div>
   </footer>
 </body>
 </html>
