@@ -3,119 +3,138 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UNO MÁS!</title>
+  <!-- Fallback font similar. Replace with Avallor by adding the font file in /fonts and updating @font-face -->
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Arial Black', sans-serif;
-      background-color: #0d0d0d;
-      color: white;
-      text-align: center;
+    :root{
+      --violeta:#b277ff;
+      --amarillo:#fdf200;
+      --negro:#0d0d0d;
     }
-    header {
-      background: linear-gradient(90deg, #fdf200, #f004c1);
-      padding: 1rem 0;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: url('carta1.jpg') center/cover fixed no-repeat;
+      color:#fff;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-    header img {
-      width: 150px;
-      margin-top: 10px;
+    /* overlay para mejorar contraste */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.65);
+      z-index:-1;
     }
-    .slogan {
-      margin: 0.5rem;
-      font-size: 1rem;
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px;
+      background: radial-gradient(1200px 200px at 50% -50%, rgba(253,242,0,.25), transparent 60%);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .social-icons a img {
-      width: 30px;
-      margin: 0 10px;
+    .brand{
+      display:flex; align-items:center; gap:12px;
     }
-    .menu {
-      padding: 2rem 1rem;
-      max-width: 800px;
-      margin: auto;
+    .brand img{width:58px;height:58px}
+    .brand h1{
+      margin:0;
+      font-family: 'Bangers', cursive; /* reemplazar por 'Avallor' si se sube la tipografía */
+      letter-spacing:1px;
+      font-size: clamp(28px, 4vw, 40px);
+      color:#fff;
+      text-shadow: 0 0 8px rgba(178,119,255,.6), 0 0 18px rgba(253,242,0,.35);
     }
-    .menu h2 {
-      font-size: 2.2rem;
-      color: #d95fff;
-      margin-bottom: 1rem;
+    .actions{
+      display:flex; align-items:center; gap:10px;
     }
-    .category {
-      background-color: #1a1a1a;
-      border: 2px solid #fdf200;
-      padding: 1rem;
-      margin-bottom: 2rem;
-      border-radius: 10px;
+    .actions a{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:40px;height:40px;border-radius:10px;
+      background:#111; border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 2px 10px rgba(0,0,0,.35);
+      transition: transform .1s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    .category h3 {
-      color: #fdf200;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+    .actions a:hover{ transform: translateY(-2px); border-color: rgba(253,242,0,.6); box-shadow:0 6px 16px rgba(253,242,0,.15); }
+    .actions img{ width:22px; height:22px; }
+    .hero{
+      text-align:center;
+      padding: 18px 16px 8px;
     }
-    .drink {
-      margin: 1rem 0;
+    .hero p{
+      margin:6px 0 0;
+      color:#ddd;
+      font-size:14px;
     }
-    .drink-name {
-      font-weight: bold;
-      color: #ffffff;
+    .grid{
+      max-width:980px; margin:22px auto 60px; padding:0 14px;
+      display:grid; grid-template-columns:1fr; gap:16px;
     }
-    .drink-desc {
-      font-size: 0.9rem;
-      color: #bbbbbb;
+    @media(min-width:720px){ .grid{ grid-template-columns:1fr 1fr; gap:18px; } }
+    .card-img{
+      position:relative;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background:#000;
+      box-shadow: 0 10px 28px rgba(0,0,0,.45);
+      transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    .drink-price {
-      color: #d95fff;
+    .card-img:hover{ transform: translateY(-4px); border-color: rgba(253,242,0,.6); box-shadow: 0 16px 36px rgba(178,119,255,.25); }
+    .card-img img{ width:100%; display:block; }
+    .cta-wa{
+      position:absolute; right:12px; bottom:12px;
+      background:linear-gradient(135deg, var(--amarillo), #ffd84d);
+      color:#000; font-weight:700; text-decoration:none;
+      padding:10px 14px; border-radius:12px;
+      box-shadow: 0 6px 14px rgba(253,242,0,.35);
+      border: 1px solid rgba(0,0,0,.2);
+      font-size:14px;
     }
-    .btn-pedido {
-      background-color: #fdf200;
-      color: black;
-      padding: 15px 25px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      display: inline-block;
-      margin: 2rem 0;
+    footer{
+      padding: 26px 16px 38px;
+      text-align:center;
+      color:#ccc;
     }
+    .legal{ font-size:12px; opacity:.75; margin-top:10px }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="UNO MÁS! logo">
-    <p class="slogan">Los mejores tragos de Alto Comedero</p>
-    <div class="social-icons">
-      <a href="https://wa.me/XXXXXXXXXXX"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
-      <a href="https://instagram.com/tuusuario"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram"></a>
-      <a href="https://tiktok.com/@tuusuario"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok"></a>
+    <div class="brand">
+      <img src="logo.png" alt="UNO MÁS logo">
+      <h1>UNO MÁS!</h1>
+    </div>
+    <div class="actions">
+      <a href="https://wa.me/5493885205146" aria-label="WhatsApp" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WA" /></a>
+      <a href="https://www.instagram.com/_uno_mas_jujuy?igsh=OGtucW9kcnlkZmdr" aria-label="Instagram" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="IG" /></a>
+      <a href="https://www.tiktok.com/@zalo.349?_t=ZM-8ycGgCxxWNR&_r=1" aria-label="TikTok" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TT" /></a>
+      <a href="https://maps.app.goo.gl/bKYQYgMxtcEPQzFZ8" aria-label="Ubicación" target="_blank" rel="noopener"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlemaps.svg" alt="Maps" /></a>
     </div>
   </header>
 
-  <section class="menu">
-    <h2>CARTA</h2>
-
-    <div class="category">
-      <h3>Especiales</h3>
-      <div class="drink"><div class="drink-name">Uno Más Tropical</div><div class="drink-desc">Vodka, Naranja, Gradina, Mango, Maracuyá</div><div class="drink-price">$3000 / $6000</div></div>
-      <div class="drink"><div class="drink-name">Veneno Rojo</div><div class="drink-desc">Vodka, Frutos rojos, Frutilla, Granadina</div><div class="drink-price">$3000 / $6000</div></div>
-      <div class="drink"><div class="drink-name">Mango Sunrise</div><div class="drink-desc">Vodka, Naranja, Mango, Granadina</div><div class="drink-price">$3000 / $6000</div></div>
-      <div class="drink"><div class="drink-name">Maracuyá Sunset</div><div class="drink-desc">Vodka, Maracuyá, Naranja, Durazno, Granadina</div><div class="drink-price">$3000 / $6000</div></div>
-      <div class="drink"><div class="drink-name">Piña Loca</div><div class="drink-desc">Ron, Ananá, Piña Colada, Granadina</div><div class="drink-price">$3000 / $6000</div></div>
-      <div class="drink"><div class="drink-name">Tropical Frozen</div><div class="drink-desc">Ron, Ananá, Frutilla, Granadina</div><div class="drink-price">$3000 / $6000</div></div>
-      <div class="drink"><div class="drink-name">Blue Candy</div><div class="drink-desc">Ron, Blue Corazón, Ananá</div><div class="drink-price">$3000 / $6000</div></div>
-      <div class="drink"><div class="drink-name">Gin Tonic</div><div class="drink-desc">Maracuyá, Frutos Rojos, Ananá, Frutilla, Flyn Paff</div><div class="drink-price">$3000 / $6000</div></div>
-      <div class="drink"><div class="drink-name">Gancia Tropical</div><div class="drink-desc">Gancia, Vodka, Maracuyá, Naranja</div><div class="drink-price">$3000 / $6000</div></div>
-    </div>
-
-    <div class="category">
-      <h3>Clásicos</h3>
-      <div class="drink"><div class="drink-name">Daikiri Frozen</div><div class="drink-desc">Ron, almíbar, fruta a elección</div><div class="drink-price">$3500 / $6500</div></div>
-      <div class="drink"><div class="drink-name">Caipiroska</div><div class="drink-desc">Vodka, yerba buena, fruta a elección</div><div class="drink-price">$3000 / $6000</div></div>
-      <div class="drink"><div class="drink-name">Mojitos</div><div class="drink-desc">Ron, Menta, fruta a elección</div><div class="drink-price">$3000 / $6000</div></div>
-      <div class="drink"><div class="drink-name">Gin Tonic</div><div class="drink-desc">Mango, Flyn Paff, Maracuyá, Frutilla, Ananá, Frutos Rojos</div><div class="drink-price">$3500 / $6500</div></div>
-      <div class="drink"><div class="drink-name">Fernet</div><div class="drink-price">$3500 / $6500</div></div>
-      <div class="drink"><div class="drink-name">Cerveza Andes</div><div class="drink-desc">473ml Rubia</div><div class="drink-price">$1500</div></div>
-      <div class="drink"><div class="drink-name">Dr Lemon / Frizzé</div><div class="drink-price">$3000</div></div>
-    </div>
-
-    <a href="https://wa.me/XXXXXXXXXXX" class="btn-pedido">HACÉ TU PEDIDO AQUÍ</a>
+  <section class="hero">
+    <p>Hacé tu pedido por WhatsApp. Toque/tap en la carta 👇</p>
   </section>
+
+  <main class="grid">
+    <a class="card-img" href="https://wa.me/5493885205146" target="_blank" rel="noopener">
+      <img src="carta1.jpg" alt="Carta - De la casa">
+      <span class="cta-wa">Pedir por WhatsApp</span>
+    </a>
+    <a class="card-img" href="https://wa.me/5493885205146" target="_blank" rel="noopener">
+      <img src="carta2.jpg" alt="Carta - Clásicos">
+      <span class="cta-wa">Pedir por WhatsApp</span>
+    </a>
+  </main>
+
+  <footer>
+    <div>© UNO MÁS! — Tragos a domicilio</div>
+    <div class="legal">IG: @_uno_mas_jujuy · TikTok: @zalo.349</div>
+  </footer>
 </body>
 </html>
