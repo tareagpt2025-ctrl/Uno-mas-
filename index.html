@@ -1,128 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UNO MÁS!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --violeta:#b277ff;
-      --amarillo:#fdf200;
-      --negro:#0b0b0b;
-      --wa:#25D366;
-      --tt-cyan:#00f2ea;
-      --tt-pink:#ff0050;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background: url('bg.jpg') center/cover fixed no-repeat;
-      color:#fff;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.72));
-      z-index:-1;
-    }
-    header{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:10px;
-      padding:18px 16px 8px;
-      text-align:center;
-    }
-    .brand img{width:88px;height:88px;border-radius:50%; box-shadow:0 0 18px rgba(253,242,0,.35), 0 0 26px rgba(178,119,255,.35);}
-    .brand h1{
-      margin:6px 0 0;
-      font-family:'Bangers', cursive;
-      letter-spacing:1px;
-      font-size: clamp(32px,6vw,56px);
-      color:#fff;
-      text-shadow: 0 0 10px rgba(178,119,255,.7), 0 0 22px rgba(253,242,0,.45);
-    }
-    .tagline{
-      margin:4px 0 10px;
-      font-size:16px;
-      color:#eaeaea;
-    }
-    .social-dock{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
-      flex-wrap:wrap;
-      margin:8px 0 10px;
-    }
-    .btn-social{
-      width:64px;height:64px;border-radius:18px;
-      display:inline-flex;align-items:center;justify-content:center;
-      border:1px solid rgba(255,255,255,.12);
-      background:#101010;
-      position:relative;
-      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-    .btn-social img{ width:30px; height:30px; filter: invert(1) brightness(1.1); }
-    .btn-social:hover{ transform: translateY(-3px); }
-    .btn-wa{ box-shadow: 0 0 12px var(--wa), 0 0 24px rgba(37,211,102,.4); border-color: rgba(37,211,102,.55); }
-    .btn-ig{ 
-      background: radial-gradient(circle at 30% 30%, #ffdd55, #ff2e77 45%, #b700ff 75%);
-      box-shadow: 0 0 14px rgba(255,46,119,.55), 0 0 26px rgba(183,0,255,.45);
-      border:1px solid rgba(255,255,255,.15);
-    }
-    .btn-tt{ box-shadow: 0 0 10px var(--tt-cyan), 0 0 14px var(--tt-pink); border-color: rgba(255,255,255,.18); }
-    .btn-maps{ 
-      background: radial-gradient(circle at 30% 30%, var(--amarillo), #ffd84d 40%, #7a5cff 90%);
-      box-shadow: 0 0 12px rgba(253,242,0,.55), 0 0 26px rgba(122,92,255,.45);
-      border:1px solid rgba(255,255,255,.18);
-    }
-
-    .hero{
-      text-align:center;
-      padding: 6px 16px 12px;
-    }
-    .hero .cta{
-      margin:6px auto 0;
-      max-width:920px;
-      font-size:18px; font-weight:700;
-      color:#fff;
-      text-shadow: 0 0 10px rgba(253,242,0,.45);
-    }
-
-    .grid{
-      max-width:980px; margin:14px auto 60px; padding:0 14px;
-      display:grid; grid-template-columns:1fr; gap:16px;
-    }
-    @media(min-width:720px){ .grid{ grid-template-columns:1fr 1fr; gap:18px; } }
-    .card-img{
-      position:relative;
-      border-radius:14px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background:#000;
-      box-shadow: 0 10px 28px rgba(0,0,0,.45);
-      transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-    .card-img:hover{ transform: translateY(-4px); border-color: rgba(253,242,0,.6); box-shadow: 0 16px 36px rgba(178,119,255,.25); }
-    .card-img img{ width:100%; display:block; }
-
-    footer{
-      padding: 26px 16px 38px;
-      text-align:center;color:#ccc;
-    }
-    .legal{ font-size:12px; opacity:.75; margin-top:10px }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <div class="brand">
-      <img src="logo.png" alt="UNO MÁS logo">
+    <div class="brand" role="banner" aria-label="UNO MÁS!">
+      <img src="img/logo.png" alt="UNO MÁS logo">
       <h1>UNO MÁS!</h1>
     </div>
 
@@ -148,15 +35,15 @@
 
   <main class="grid">
     <a class="card-img" href="https://wa.me/5493885205146" target="_blank" rel="noopener">
-      <img src="carta1.jpg" alt="Carta - De la casa">
+      <img src="img/carta1.jpg" alt="Carta - De la casa">
     </a>
     <a class="card-img" href="https://wa.me/5493885205146" target="_blank" rel="noopener">
-      <img src="carta2.jpg" alt="Carta - Clásicos">
+      <img src="img/carta2.jpg" alt="Carta - Clásicos">
     </a>
   </main>
 
   <footer>
-    <div>© UNO MÁS! — Tragos a domicilio</div>
+    <div class="slogan">Sabores que encienden la noche ✦ ¡Hacé tu pedido!</div>
     <div class="legal">IG: @_uno_mas_jujuy · TikTok: @uno.mas.tragos</div>
   </footer>
 </body>
